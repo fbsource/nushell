@@ -363,7 +363,7 @@ fn merge_records(left: &Record, right: &Record, shared_key: Option<&str>) -> Rec
 
     for (k, v) in right {
         let k_seen = seen.contains(k);
-        let k_shared = shared_key == Some(k);
+        let k_shared = shared_key == Some(k.as_str());
         // Do not output shared join key twice
         if !(k_seen && k_shared) {
             record.push(
